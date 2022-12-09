@@ -2,9 +2,9 @@ name: l80 example - GitHub Action flow to Docker hub with local cache & multi-st
 
 on:
   workflow_dispatch:
-#  push:
-#    branches:
-#      - 'main'
+ push:
+   branches:
+     - 'main'
 
 jobs:
   build-push-images-with-cache:
@@ -34,12 +34,12 @@ jobs:
           key: ${{ runner.os }}-multi-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-multi-buildx
-      
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: spg51/lab:lab8
+          images: michas12/lab8:lab8
 
       - name: Build and push Docker image
         id: docker_build
